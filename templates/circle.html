@@ -1,0 +1,70 @@
+<div class="circle-wrap">
+  <div class="circle">
+
+    <div class="mask full">
+      <div class="fill"></div>
+    </div>
+
+    <div class="mask half">
+      <div class="fill"></div>
+    </div>
+
+    <div class="inside-circle">
+      70%
+    </div>
+
+  </div>
+<style>
+:root{--ukuran: 10em;}
+
+.circle-wrap {
+  margin: 50px auto;
+  width: var(--ukuran);
+  height: var(--ukuran);
+  background: #ddd;
+  border-radius: 50%;
+  display: none;
+}
+.circle-wrap .circle .mask,
+.circle-wrap .circle .fill {
+  width: var(--ukuran);
+  height: var(--ukuran);
+  position: absolute;
+  border-radius: 50%;
+}
+.circle-wrap .circle .mask {
+  clip: rect(0px, var(--ukuran), var(--ukuran), calc(var(--ukuran)/2));
+}
+.circle-wrap .circle .mask .fill {
+  clip: rect(0px, calc(var(--ukuran)/2), var(--ukuran), 0px);
+  background-color: #cc2222;
+}
+.circle-wrap .circle .mask.full,
+.circle-wrap .circle .fill {
+  animation: fill ease-in-out 3s;
+  transform: rotate(var(--persentase));
+}
+@keyframes fill {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(var(--persentase));
+  }
+}
+.circle-wrap .inside-circle {
+  width: calc(var(--ukuran)/2.2);
+  height: calc(var(--ukuran)/2.2);
+  border-radius: 50%;
+  background: #fff;
+  line-height: calc(var(--ukuran)/2.2);
+  text-align: center;
+  margin-top: 0.22em;
+  margin-left: 0.22em;
+  position: absolute;
+  z-index: 100;
+  font-weight: 700;
+  font-size: 2em;
+}
+
+</style>

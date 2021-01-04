@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analisis Sentimen</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='circle.css') }}" />
+    <style>
+:root{
+--ukuran: 10em;
+--ukuran-small: 5em;
+}
+body{
+  background: #CECECE;
+}
+.form-isi, #response {
+  border-radius: 2em;
+  background: #FFF;
+  padding: 1em 0em;
+  width: 100%;
+  -webkit-box-shadow: 10px 10px 25px 5px rgba(0,0,0,0.5);
+  -moz-box-shadow: 10px 10px 25px 5px rgba(0,0,0,0.5);
+  box-shadow: 10px 10px 25px 5px rgba(0,0,0,0.5);
+}
+#response{
+  margin: 1em 0em;
+  padding: 2em 1em;
+  width: 97%;
+}
+#kata-awal{
+  margin: 0em 2em;
+}
+.input-tweet{
+  width: 95%;
+  margin: auto 1em;
+}
+#tweet{
+  margin: 1em auto;
+  width: 100%;
+  padding: 1em 0.1em;
+  font-size: 1.3rem;
+}
+#tweet:focus, #tweet:valid{
+  border: 0px;
+  border-bottom: 1px solid #777;
+  padding: 1em 0.1em 0.2em 0.5em;
+}
+#tweet:focus ~ #tweet-label, #tweet:valid ~ #tweet-label {
+  animation: 0.3s naik;
+  position: relative;
+  top: -6em;
+}
+#tweet-label{
+  position: relative;
+  top: -4em;
+  margin: auto 0.5em;
+}
+#tweet:invalid {
+  outline: 3px solid white;
+}
+@keyframes naik {
+  from {
+    position: relative;
+    top: -4em;
+    margin: auto 0.5em;
+  }
+  to {
+    position: relative;
+    top: -6em;
+    margin: auto 0.5em;
+  }
+}
+#custom-upload{
+  background-color: rgba(00, 00, 00, 00);
+  padding: 0.1rem 0rem 0.1rem 0.1rem;
+  cursor: pointer;
+  margin-top: 1rem;
+  display: inline;
+  color: blue;
+  text-decoration: underline;
+}
+button{
+  background-color: #fff;
+  position: relative;
+  padding: 1.5em;
+}
+h1{
+  text-align: center;
+  font: serif;
+}
+label {
+  color: #777;
+  background: #FFF;
+  width: 100%;
+}
+table {
+  margin: 1em;
+}
+h4 {
+  text-align: center;
+  color: #444;
+}
+table, tr, th, td{
+  border: 1px solid #AEAEAE;
+  border-collapse: collapse;
+  padding: 0.5em;
+}
+table {
+  width: 60%;
+  text-align: center;
+}
+th {
+  background: #444;
+  color: #EEE;
+}
+footer{
+  color: #444;
+  margin: 2em 0em;
+  padding: 1em;
+}
+</style>
+</head>
+<body onload="document.getElementById('tweet').value = '';">
+<div class="form-isi">
+    <h1>Analisis Sentimen</h1>
+    <form class="input-tweet">
+        <input required type="text" id="tweet" name="tweet" /><br>
+        <label for="tweet" id="tweet-label">Bagaimana pendapat anda mengenai <i>Omnibus Law UU Cipta Kerja? </i></label><br>
+        <center>
+            <button type="button" onclick="sentenceSentiment()">Lihat Sentimen</button>
+        </center>
+    </form>
+    <center>
+        <form enctype="multipart/form-data">
+            <p>atau
+                <input type="file" id="upload" accept="text/plain" hidden />
+                <label id="custom-upload" for="upload">analisa file .txt</label></p>
+        </form>
+    </center>
+</div>
+    <center><div id="loading-spinner" style="display: none; "></div></center>
+    <div id="response" style="display: none;">    </div>
+</body>
+
+<footer>Aplikasi Analisis Sentimen, Skripsi Muhammad Ichsan Nuur Imansyah. 2020</footer>
+<script src="{{ url_for('static', filename='func.js') }}"></script>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <div id="kata-awal">Teks setelah melalui <i>stemmer</i>: <h4 id="1string"></h4></div>
+        <div class="circle-wrap">
+          <div class="circle">
+            <div class="mask full">
+              <div class="fill"></div>
+            </div>
+            <div class="mask half">
+              <div class="fill"></div>
+            </div>
+            <div class="inside-circle"><br>
+                <span id="1" class="text"></span>
+                <span id="0" class="text"></span>
+            </div>
+          </div>
+        </div>
+
+    <div>
+        <center>
+            <table>
+                <tbody id="fitur">
+                <tr>
+                    <th>Diksi</th>
+                    <th>Sentimen</th>
+                    <th>Probabilitas Kemunculan</th>
+                </tr>
+                </tbody>
+            </table>
+        </center>
+    </div>
+<script> for(let x = 0; x < json['fitur'].length; x++){
+                let h = json['fitur'][x];
+                let tr = document.createElement("tr");
+
+                let row1 = document.createElement("td");
+                let isiRow1 = document.createTextNode(h['kata']);
+                let row2 = document.createElement("td");
+                let isiRow2 = document.createTextNode(h['info_sent']);
+                let row3 = document.createElement("td");
+                let isiRow3 = document.createTextNode(h['skor'] + " : 1.0");
+
+                row1.appendChild(isiRow1);
+                row2.appendChild(isiRow2);
+                row3.appendChild(isiRow3);
+
+                tr.appendChild(row1, row2, row3);
+
+                tr.classList.add('isi');
+
+                tabel.appendChild(tr);
+                contentFilled = true;
+</script>
+</html>
